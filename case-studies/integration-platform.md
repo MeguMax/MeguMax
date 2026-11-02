@@ -6,19 +6,15 @@ The application uses **JavaScript ES modules, Node.js, Express and PostgreSQL**.
 
 ## Workflow
 
-```mermaid
-flowchart LR
-    U[Upwork MCP and API] --> A[Authenticated adapters]
-    A --> Q[Discovery and qualification]
-    Q --> R[Operator workspace]
-    R --> P[AI preparation]
-    P --> R
-    R --> S[Approved action]
-    S --> D[Dispatch and reconciliation]
-    Q --> DB[(PostgreSQL)]
-    P --> DB
-    D --> DB
-```
+| Stage | Responsibility |
+| --- | --- |
+| Connect | Authenticated adapters read Upwork MCP/API data. |
+| Discover | Scanners qualify jobs and save source context in PostgreSQL. |
+| Prepare | AI-assisted preparation returns to the operator workspace for review. |
+| Approve | The operator approves an action against saved inputs and revision. |
+| Reconcile | Dispatch results are recorded and independently checked. |
+
+PostgreSQL stores discovery, preparation and dispatch state throughout the workflow.
 
 ## Engineering decisions
 
