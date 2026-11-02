@@ -1,56 +1,61 @@
-# Internal integration and workflow platform
+# Upwork integration and proposal workspace
 
-## Overview
+An internal application for job discovery, portfolio matching, AI-assisted preparation and operator-controlled API actions. I designed and implemented the backend, browser interface, workflow state, integrations, tests and release tooling.
 
-I independently designed and built an internal application that connects an external marketplace through MCP with an operator workspace, n8n workflows and persistent business state. The system helps a team discover relevant work, apply versioned rules, prepare source-backed drafts and review the exact context before taking further action.
+The application uses **JavaScript ES modules, Node.js, Express and PostgreSQL**. Its operator interface is HTML/CSS/JavaScript. React and TypeScript are used in my other projects, not this interface.
 
-The difficult part was keeping identity, state and evidence consistent while external requests, model calls and manual edits happen at different times.
+## Workflow
 
-## My responsibilities
-
-- Requirements analysis, application architecture and backend implementation.
-- MCP integration and OAuth discovery, dynamic client registration, PKCE and token refresh.
-- Operator workspace for jobs, profiles, rules, drafts, sources and conversations.
-- Persistent workflow state, migration, versioning, validation and recovery behavior.
-- AI-assisted preparation with strict structured output and server-controlled evidence references.
-- Regression tests, container deployment and code-release checks.
-
-## Architecture
-
-```text
-External platform MCP
-        |
-OAuth and account-scoped adapter
-        |
-Express API and operator workspace
-        |
-Versioned rules and workflow orchestration
-        |                       |
-PostgreSQL state          AI preparation
-        |                       |
-Run ledger               Server-owned source registry
-        |                       |
-        +------ Human review ---+
+```mermaid
+flowchart LR
+    U[Upwork MCP and API] --> A[Authenticated adapters]
+    A --> Q[Discovery and qualification]
+    Q --> R[Operator workspace]
+    R --> P[AI preparation]
+    P --> R
+    R --> S[Approved action]
+    S --> D[Dispatch and reconciliation]
+    Q --> DB[(PostgreSQL)]
+    P --> DB
+    D --> DB
 ```
 
 ## Engineering decisions
 
-**Identity and authorization.** A job discovered through one account is not automatically an action authorised for another account. I kept canonical job identity, discovery context and applying identity separate and bound operations to the relevant connection.
+### Authentication and account context
 
-**Reliable state changes.** I used transactional state mutations, revision-aware reads and immutable workflow snapshots. Long operations recheck their pinned context before committing results so newer manual edits are preserved.
+MCP connections support OAuth discovery, dynamic client registration and PKCE. Tokens are encrypted per connection, and competing refresh requests share one in-flight operation. Discovery context and the identity allowed to act are kept separate.
 
-**Ambiguous outcomes.** A timeout does not prove an operation failed. The workflow records pending and unknown outcomes and prevents unsafe duplicate actions until the state can be reconciled.
+### Persistent state and concurrent changes
 
-**Source-backed AI preparation.** The model selects from server-generated evidence identifiers. The server resolves those identifiers to exact source passages and performs additional business validation after schema validation. Unknown availability, commercial commitments and unsupported experience remain review items.
+PostgreSQL transactions, row locks and revision checks protect workflow changes. Long-running work rechecks its source version before updating a draft, preserving newer manual edits. An uncertain database commit stops further processing until the outcome can be reconciled.
 
-**Recovery and deployment.** Preparation attempts record stage inputs, outputs, versions and ownership. Interrupted work is retained rather than blindly replayed. Release checks compare protected workflow records and manual state before and after code changes.
+### Discovery and portfolio evidence
+
+Versioned scanners combine provider search with local matching rules, deduplicate results and coordinate rate limits and cooldowns. Capability profiles and portfolio records retain their source context. The portfolio knowledge layer extracts source-linked information; it is not a vector-search or model-training claim.
+
+### AI preparation
+
+The OpenAI Responses API produces schema-constrained proposal packages and screening answers. The server checks evidence identifiers, source freshness and business constraints after generation. Missing or unsupported facts remain review items.
+
+### Approval and external outcomes
+
+An approved action is bound to saved inputs, identity and revision. A durable claim is recorded before dispatch, and duplicate-action locks remain in place when the result is uncertain. Provider acknowledgement and independent delivery readback are separate states.
+
+### Operator experience and intake
+
+The browser workspace covers scanners, qualification, profiles, sources, drafts, feedback and conversations. Stale-response protection prevents late requests from replacing another working draft. An optional read-only IMAP source implements MIME parsing, recipient mapping, deduplication, quarantine and atomic progress checkpoints.
+
+## Validation and scope
+
+- The recorded full regression run on **2 November 2026 passed 3,831 Node tests**. The saved run was matched to the source/test snapshot during review. The suite includes fixtures and mocked providers; this is not a coverage percentage or a count of live end-to-end tests.
+- Bounded operator-approved pilot actions were checked through independent readback of core proposal fields. This does not establish contracts, revenue or complete verification of every optional provider field.
+- Docker release checks include targeted Linux validation with network access disabled and preservation checks for existing state and dependent services.
+- The IMAP implementation was tested and installed, but a live mailbox and polling were not activated in the reviewed acceptance evidence.
+- HubSpot remained a review queue. A completed live CRM writer, full individual-user RBAC product and production-scale throughput are not claimed.
 
 ## Technologies
 
-JavaScript, Node.js, Express, PostgreSQL, MCP SDK, OAuth/PKCE, Zod, n8n, Docker and Traefik. The operator interface uses HTML, CSS and JavaScript.
+JavaScript, Node.js, Express, PostgreSQL, MCP SDK, OAuth/PKCE, Zod, OpenAI Responses API, ImapFlow, mailparser and Docker/Compose.
 
-## Outcome
-
-The application brings discovery, qualification, drafts and review into one operational workspace with traceable sources and explicit workflow state. Its implementation provides concrete examples of concurrency handling, integration reliability, source validation and preserving human work.
-
-Private project. A sanitized architecture walkthrough can be used for an interview. Client records, credentials and internal service URLs are excluded from this summary.
+The application source is private. This public summary contains architecture and engineering scope without client records, credentials or internal endpoints.
