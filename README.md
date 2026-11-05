@@ -18,6 +18,12 @@ Based in **Ukraine**. Open to remote backend/full-stack roles and discussing rel
 
 These case studies describe independently delivered client projects. Private systems are represented by public architecture notes, with implementation and validation scope stated in each case.
 
+## Client integrations and automation
+
+Alongside the systems above, I build CRM synchronization, payment-triggered onboarding, booking flows and custom GoHighLevel interfaces. [Selected client automation work](case-studies/client-automations.md) describes the implementation scope.
+
+My personal Upwork profile showed **100% Job Success, $6K+ total earnings, 3 total jobs and 180 total hours** on **4 November 2026**. [View my profile](https://www.upwork.com/freelancers/~014b478981bfacdaf1).
+
 ## Application and frontend projects
 
 | Repository | Project |
