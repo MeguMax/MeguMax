@@ -58,12 +58,40 @@ window.PORTFOLIO = {
           "text": "Built immutable application packages, account-scoped previews, duplicate-send locks and delivery states that distinguish acknowledgement, verified delivery and unknown outcomes. The UI preserves unsaved manual text and rejects stale asynchronous responses."
         }
       ],
-      "cover": "assets/portfolio/upwork-cover.png",
+      "cover": "assets/portfolio/upwork-cover-v2.png",
       "architecture": "assets/portfolio/upwork-architecture.svg",
       "screenshots": [
         {
+          "src": "assets/portfolio/upwork-work-profile-full-app-synthetic.png",
+          "caption": "Actual full application interface with synthetic data: a work profile and its pinned preparation policies."
+        },
+        {
+          "src": "assets/portfolio/upwork-jobs-list-demo.png",
+          "caption": "Actual current Jobs interface with synthetic data: saved job records, preparation state and explicit review steps."
+        },
+        {
+          "src": "assets/portfolio/upwork-jobs-workspace-demo.png",
+          "caption": "Actual current operator workspace with synthetic portfolio data: job discovery and preparation state. No live accounts or external actions."
+        },
+        {
+          "src": "assets/portfolio/upwork-portfolio-library-demo.png",
+          "caption": "Actual current portfolio library with synthetic cases and evidence boundaries. No live client records."
+        },
+        {
+          "src": "assets/portfolio/upwork-dashboard-demo.png",
+          "caption": "Actual current dashboard with synthetic workflow data. Displayed counts are demonstration values."
+        },
+        {
+          "src": "assets/portfolio/upwork-job-workflow-states-synthetic.png",
+          "caption": "Actual job-list renderer with synthetic workflow states; draft, review and delivery states remain distinct."
+        },
+        {
+          "src": "assets/portfolio/upwork-chat-exact-recipient-review-synthetic.png",
+          "caption": "Actual chat component with synthetic participants and an explicit recipient-review step."
+        },
+        {
           "src": "assets/portfolio/upwork-renderer-demo.png",
-          "caption": "Actual component renderer and styling, populated with synthetic portfolio data. Isolated demonstration; no live account, AI request or application submission."
+          "caption": "Actual original-result component with synthetic portfolio data, separate from human corrections."
         }
       ],
       "validation": [
@@ -134,12 +162,20 @@ window.PORTFOLIO = {
           "text": "A persistent notification outbox is tied to a verified prepared bundle. Duplicate or stale notifications are rejected; interrupted delivery becomes uncertain so the operator can check before resending. Workflow state, retry history and audits persist in SQLite WAL."
         }
       ],
-      "cover": "assets/portfolio/mifile-cover.png",
+      "cover": "assets/portfolio/mifile-cover-v2.png",
       "architecture": "assets/portfolio/mifile-architecture.svg",
       "screenshots": [
         {
+          "src": "assets/portfolio/mifile-case-assignment-demo.png",
+          "caption": "Actual application UI with synthetic QA data: several independent cases share one intake email while unassigned supporting PDFs remain visible for review."
+        },
+        {
           "src": "assets/portfolio/mifile-review-demo.png",
           "caption": "Actual application UI with synthetic QA data: document preview and guided package corrections."
+        },
+        {
+          "src": "assets/portfolio/mifile-bulk-document-move-demo.png",
+          "caption": "Actual application UI with synthetic QA data: moving selected supporting PDFs to another case preserves original OneDrive files and requires review of both packages."
         },
         {
           "src": "assets/portfolio/mifile-fields-demo.png",
@@ -156,6 +192,30 @@ window.PORTFOLIO = {
         {
           "src": "assets/portfolio/mifile-editable-pdf-demo.png",
           "caption": "Generated editable-PDF example rendered for inspection. All populated parties and contact details are fictional QA data; do not file."
+        },
+        {
+          "src": "assets/portfolio/mifile-court-rule-demo.png",
+          "caption": "Actual application UI with synthetic QA data: versioned court rules preserve existing manual document choices."
+        },
+        {
+          "src": "assets/portfolio/mifile-document-retry-demo.png",
+          "caption": "Actual application UI with synthetic QA data: a simulated download timeout is visible alongside bounded retry status and actionable corrections."
+        },
+        {
+          "src": "assets/portfolio/mifile-ocr-source-demo.png",
+          "caption": "Actual application UI with synthetic QA data: the operator can distinguish OCR-derived source fields and cross-check completion from later preparation or submission state."
+        },
+        {
+          "src": "assets/portfolio/mifile-notification-review-demo.png",
+          "caption": "Actual application UI with synthetic QA data: uncertain notification delivery stays separate from the saved preparation package and prompts inbox review before retry."
+        },
+        {
+          "src": "assets/portfolio/mifile-dc508-output-demo.png",
+          "caption": "Rendered generated PDF with fictional QA fields. A template-output example, not a real legal record or filing."
+        },
+        {
+          "src": "assets/portfolio/mifile-mc202-output-demo.png",
+          "caption": "Rendered generated PDF with fictional QA fields, visibly labelled QA TEST - DO NOT FILE."
         }
       ],
       "validation": [
@@ -222,9 +282,18 @@ window.PORTFOLIO = {
           "text": "A PatientNow order maps to a CRM opportunity through a persisted order-ID link. Voids and full or partial refunds update the associated representation. Purchases flow from PatientNow to GHL; this is not a bidirectional payment-processing system."
         }
       ],
-      "cover": "assets/portfolio/patientnow-cover.png",
+      "cover": "assets/portfolio/patientnow-cover-v2.png",
       "architecture": "assets/portfolio/patientnow-architecture.svg",
-      "screenshots": [],
+      "screenshots": [
+        {
+          "src": "assets/portfolio/patientnow-guide-permissions-excerpt.png",
+          "caption": "Excerpt from the 24 October 2026 deployment guide: scoped configuration and account-specific setup. Documentation example, not a live system capture."
+        },
+        {
+          "src": "assets/portfolio/patientnow-guide-acceptance-excerpt.png",
+          "caption": "Excerpt from the 24 October 2026 deployment guide: acceptance checks for cancellation, refunds, provider calendars and blocked time. These are test instructions, not a claim that each live check has passed."
+        }
+      ],
       "validation": [
         {
           "title": "74 offline tests",
@@ -343,20 +412,6 @@ window.PORTFOLIO = {
       "scope": "Development snapshot; authentication integration requires further alignment."
     },
     {
-      "id": "notion-ghl-make",
-      "title": "Notion → GoHighLevel workflow automation",
-      "role": "Platform integration work",
-      "summary": "A published Upwork portfolio example of connecting Notion and GoHighLevel through Make. It adds evidence of low-code automation alongside custom backend engineering.",
-      "stack": [
-        "Notion",
-        "GoHighLevel",
-        "Make"
-      ],
-      "category": "Client work",
-      "link": "https://www.upwork.com/freelancers/~014b478981bfacdaf1?p=2110337539072770048",
-      "scope": "Platform automation through Make."
-    },
-    {
       "id": "hostshield",
       "title": "HostShield frontend",
       "role": "Earlier paid React/Next.js frontend work · Product closed",
@@ -372,30 +427,114 @@ window.PORTFOLIO = {
       "category": "Client work",
       "link": "https://github.com/MeguMax/hosthield-develop",
       "scope": "Historical frontend code; the original product is closed."
+    }
+  ],
+  "clientWork": [
+    {
+      "id": "uw-01",
+      "sourceIndex": 0,
+      "title": "Notion to GoHighLevel contact sync",
+      "titleOriginal": "Notion ↔ GoHighLevel CRM Integration and Automation via Make",
+      "role": "Automation and API integration",
+      "summary": "I connected a Notion contact database to GoHighLevel through a Make scenario. The workflow maps fields, searches for an existing contact, and chooses an update or create operation. Webhook triggers, error logging and notifications make the sequence easier to follow and maintain. The described implementation sends changes from Notion to GHL; reverse synchronization was a possible extension.",
+      "stack": [
+        "Notion",
+        "GoHighLevel",
+        "Make",
+        "Webhooks",
+        "JSON mapping"
+      ],
+      "category": "CRM & integrations",
+      "link": "https://www.upwork.com/freelancers/~014b478981bfacdaf1?p=2110337539072770048",
+      "scope": "One-way contact synchronization through Make, with duplicate checks and field mapping.",
+      "images": [
+        {
+          "src": "assets/portfolio/upwork/uw-01-01.png",
+          "caption": "Notion-to-GoHighLevel contact lookup, create/update and task workflow."
+        }
+      ]
     },
     {
-      "id": "payment-triggered-course-onboarding",
-      "title": "Payment-triggered onboarding and course access",
-      "role": "Funnel and automation implementation",
-      "summary": "A one-page course-sales funnel connecting Stripe checkout to GoHighLevel CRM updates, tags and access-email workflows through Zapier and webhooks. The published portfolio describes responsive forms and follow-up email/SMS sequences; course content and client details remain private.",
+      "id": "uw-02",
+      "sourceIndex": 1,
+      "title": "Coaching community and webinar funnel",
+      "titleOriginal": "GoHighLevel Funnel & CRM Automation for Mompreneur Coaching Community",
+      "role": "GoHighLevel funnels and CRM automation",
+      "summary": "I built a GoHighLevel journey that connects community signup, discovery calls, webinars and program enrollment. Forms apply tags and segmentation so contacts enter the relevant booking or email sequence. Calendar integration, Zapier and webhooks connect registration to CRM updates, reminders and replay access. Custom HTML, CSS and JavaScript support responsive pages and conditional form behaviour.",
       "stack": [
         "GoHighLevel",
-        "Stripe",
         "Zapier",
         "Webhooks",
-        "JavaScript",
+        "Calendar integration",
         "HTML",
-        "CSS"
+        "CSS",
+        "JavaScript"
       ],
-      "category": "Client work",
-      "link": "https://www.upwork.com/freelancers/~014b478981bfacdaf1?p=1990431490445197312",
-      "scope": "Published client portfolio example."
+      "category": "Funnels & websites",
+      "link": "https://www.upwork.com/freelancers/~014b478981bfacdaf1?p=1998392639857852416",
+      "scope": "Community, booking and webinar workflows built on GoHighLevel.",
+      "images": [
+        {
+          "src": "assets/portfolio/upwork/uw-02-02.png",
+          "caption": "Mompreneur community homepage and branded hero section."
+        },
+        {
+          "src": "assets/portfolio/upwork/uw-02-01.png",
+          "caption": "Public booking page with embedded discovery-call calendar."
+        },
+        {
+          "src": "assets/portfolio/upwork/uw-02-05.png",
+          "caption": "Branded merchandise storefront and product grid."
+        },
+        {
+          "src": "assets/portfolio/upwork/uw-02-03.png",
+          "caption": "Lead-capture popup with an empty email and name form."
+        },
+        {
+          "src": "assets/portfolio/upwork/uw-02-04.png",
+          "caption": "Community, guide and episode calls to action."
+        }
+      ]
     },
     {
-      "id": "ghl-white-label-saas-customization",
-      "title": "White-label CRM interface customization",
-      "role": "GoHighLevel interface and workflow customization",
-      "summary": "Customized a white-label GoHighLevel workspace using JavaScript, reusable CSS and responsive interface patterns. The published case covers navigation, dashboards, smart lists, pipelines and role-aware visibility across sub-accounts, with reusable branding and interaction states.",
+      "id": "uw-03",
+      "sourceIndex": 2,
+      "title": "Executive coaching lead-magnet funnel",
+      "titleOriginal": "GoHighLevel Landing Page & CRM Automation for Executive Coaching",
+      "role": "Funnel migration and workflow integration",
+      "summary": "I migrated a coaching lead-magnet journey from fragmented Systeme.io flows into GoHighLevel. Opt-in and thank-you pages connect ebook delivery to CRM tagging, nurture emails and booking follow-ups. Showit pages and calls to action follow the same journey, while Make, Google Sheets and analytics configuration support the surrounding workflow. The work combines page implementation, segmentation and integration setup.",
+      "stack": [
+        "GoHighLevel",
+        "Showit",
+        "Make",
+        "Google Sheets",
+        "GA4",
+        "GTM",
+        "HTML",
+        "CSS",
+        "JavaScript"
+      ],
+      "category": "Funnels & websites",
+      "link": "https://www.upwork.com/freelancers/~014b478981bfacdaf1?p=2091895862459183104",
+      "scope": "Lead-magnet migration, page alignment and CRM follow-up automation.",
+      "images": [
+        {
+          "src": "assets/portfolio/upwork/uw-03-01.png",
+          "caption": "Executive-coaching lead-capture landing page with a blank form."
+        },
+        {
+          "src": "assets/portfolio/upwork/uw-03-02.png",
+          "caption": "Webhook workflow with HTTP/Sheets and AI response branches."
+        }
+      ]
+    },
+    {
+      "id": "uw-04",
+      "sourceIndex": 3,
+      "title": "White-label GoHighLevel workspace",
+      "titleOriginal": "GoHighLevel White-Label SaaS CRM Automation & UI/UX Optimization",
+      "role": "JavaScript and CSS interface customization",
+      "summary": "I customized a white-label GoHighLevel interface with JavaScript and reusable CSS. The work covers navigation, dashboards, smart lists, contacts, opportunity views and enrollment pipelines. Shared styling and interaction patterns keep the workspace consistent across sub-accounts, while role-aware visibility changes which interface elements people see. This is customization of an existing platform; frontend visibility does not replace its backend authorization.",
       "stack": [
         "GoHighLevel",
         "JavaScript",
@@ -405,28 +544,542 @@ window.PORTFOLIO = {
         "Naive UI",
         "Tabulator"
       ],
-      "category": "Client work",
+      "category": "CRM & integrations",
       "link": "https://www.upwork.com/freelancers/~014b478981bfacdaf1?p=2054642433408012288",
-      "scope": "Published client portfolio example."
+      "scope": "Platform interface customization with reusable styling and role-aware visibility.",
+      "images": []
     },
     {
-      "id": "interactive-mortgage-intake",
-      "title": "Interactive mortgage intake",
-      "role": "Interactive frontend and CRM intake design",
-      "summary": "An interactive mortgage enquiry flow that captures service intent, property details, indicative financing needs and timing before collecting contact information and consent. The published case describes a Vue.js single-page interface on AdsQuiz with GoHighLevel integration-ready lead delivery and segmentation workflows.",
+      "id": "uw-05",
+      "sourceIndex": 4,
+      "title": "Interactive mortgage enquiry flow",
+      "titleOriginal": "Interactive Mortgage Lead Funnel | CRM Automation & Lead Generation",
+      "role": "Interactive frontend and CRM-ready intake",
+      "summary": "I designed a conversational mortgage enquiry flow that gathers service intent, property information, indicative financing needs and timing before contact details. A Vue.js single-page interface on AdsQuiz uses stepped questions, sliders and consent capture to organize the information. The flow prepares structured lead data for CRM delivery and segmentation, giving the enquiry a consistent format before the first conversation.",
       "stack": [
         "Vue.js",
+        "AdsQuiz",
         "JavaScript",
         "HTML",
         "CSS",
-        "AdsQuiz",
         "GoHighLevel",
         "API integration"
       ],
-      "category": "Client work",
+      "category": "Funnels & websites",
       "link": "https://www.upwork.com/freelancers/~014b478981bfacdaf1?p=2105280224797556736",
-      "scope": "Published client portfolio example."
+      "scope": "Interactive enquiry collection and integration-ready lead delivery.",
+      "images": [
+        {
+          "src": "assets/portfolio/upwork/uw-05-01.png",
+          "caption": "Mortgage consultation funnel introduction."
+        },
+        {
+          "src": "assets/portfolio/upwork/uw-05-02.png",
+          "caption": "Mortgage-service selection step."
+        },
+        {
+          "src": "assets/portfolio/upwork/uw-05-03.png",
+          "caption": "Contact form and consent controls at the final funnel step."
+        }
+      ]
+    },
+    {
+      "id": "uw-06",
+      "sourceIndex": 5,
+      "title": "Fitness webinar and replay automation",
+      "titleOriginal": "GHL Funnel Builder for Fitness Coach | Webinar & Marketing Automation",
+      "role": "Funnel and automation implementation with a designer",
+      "summary": "I implemented the automation side of a webinar sales journey alongside a designer. GoHighLevel pages cover registration, the live session, replay, sales offers and checkout. ActiveCampaign lists, tags and behavioural states distinguish registered, attended, missed and purchased contacts, driving different reminders and follow-ups. Stripe and PayPal integrations and GA4 event setup connect the marketing workflow to its checkout stages.",
+      "stack": [
+        "GoHighLevel",
+        "ActiveCampaign",
+        "Stripe",
+        "PayPal",
+        "GA4",
+        "Email automation"
+      ],
+      "category": "Funnels & websites",
+      "link": "https://www.upwork.com/freelancers/~014b478981bfacdaf1?p=2096955411710705664",
+      "scope": "Webinar and replay workflows with ActiveCampaign segmentation and checkout integration.",
+      "images": [
+        {
+          "src": "assets/portfolio/upwork/uw-06-01.png",
+          "caption": "Fitness webinar registration page with a blank contact form."
+        },
+        {
+          "src": "assets/portfolio/upwork/uw-06-03.png",
+          "caption": "Fitness webinar offer and course-content section."
+        },
+        {
+          "src": "assets/portfolio/upwork/uw-06-04.png",
+          "caption": "Fitness webinar learning-goals section."
+        },
+        {
+          "src": "assets/portfolio/upwork/uw-06-02.png",
+          "caption": "Published webinar-funnel concept diagram."
+        }
+      ]
+    },
+    {
+      "id": "uw-07",
+      "sourceIndex": 6,
+      "title": "Business-coach booking funnel",
+      "titleOriginal": "GoHighLevel Funnel for Business Coach | CRM Automation, Booking, API",
+      "role": "Frontend, booking and CRM workflow integration",
+      "summary": "I connected responsive coaching pages, consultation forms and chat capture to a GoHighLevel booking workflow. CRM tags and pipeline stages organize contacts as booking and follow-up events arrive. Zapier, webhooks and Twilio connect calendar updates, confirmations, reminders and segmented email or SMS sequences. Custom HTML, CSS and JavaScript support the page layout and form behaviour around that journey.",
+      "stack": [
+        "GoHighLevel",
+        "Zapier",
+        "Webhooks",
+        "Twilio",
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "GA4",
+        "GTM"
+      ],
+      "category": "Funnels & websites",
+      "link": "https://www.upwork.com/freelancers/~014b478981bfacdaf1?p=1995878684624539648",
+      "scope": "Website, consultation booking, chat capture and CRM follow-ups.",
+      "images": [
+        {
+          "src": "assets/portfolio/upwork/uw-07-01.png",
+          "caption": "Business-coaching homepage and consultation call to action."
+        },
+        {
+          "src": "assets/portfolio/upwork/uw-07-03.png",
+          "caption": "Business-coaching services page."
+        },
+        {
+          "src": "assets/portfolio/upwork/uw-07-02.png",
+          "caption": "Consultation call to action and public business-contact footer."
+        }
+      ]
+    },
+    {
+      "id": "uw-08",
+      "sourceIndex": 7,
+      "title": "Merchant onboarding and CRM automation",
+      "titleOriginal": "GoHighLevel CRM Automation & Stripe Payment Integration | B2B Fintech",
+      "role": "CRM setup and payment-triggered workflow integration",
+      "summary": "I connected a merchant-services CRM workflow to Stripe payment events and onboarding communication. GoHighLevel pipelines, tags and responsive forms organize the customer journey, while Zapier and webhooks trigger CRM updates, team alerts and Twilio messages. The work brings payment-event notifications and follow-up steps into the CRM, keeping the onboarding sequence connected to the contact and its current pipeline stage.",
+      "stack": [
+        "GoHighLevel",
+        "Stripe",
+        "Twilio",
+        "Zapier",
+        "Webhooks",
+        "JavaScript",
+        "HTML",
+        "CSS"
+      ],
+      "category": "Payments & commerce",
+      "link": "https://www.upwork.com/freelancers/~014b478981bfacdaf1?p=1991157873461620736",
+      "scope": "Payment-event and onboarding workflows around GoHighLevel and Stripe.",
+      "images": [
+        {
+          "src": "assets/portfolio/upwork/uw-08-01.png",
+          "caption": "Merchant-services homepage and payment-processing offer."
+        },
+        {
+          "src": "assets/portfolio/upwork/uw-08-03.png",
+          "caption": "Merchant-services lead-capture page with an empty email field."
+        },
+        {
+          "src": "assets/portfolio/upwork/uw-08-02.png",
+          "caption": "Merchant-services content and service highlights."
+        }
+      ]
+    },
+    {
+      "id": "uw-09",
+      "sourceIndex": 8,
+      "title": "Gift-order and delivery workflows",
+      "titleOriginal": "GoHighLevel Automation Funnel for Gift Delivery (CRM API SMS Zapier)",
+      "role": "GoHighLevel and external-service integration",
+      "summary": "I built a branded gift-order funnel that connects CRM tagging, payment-event logic, scheduling and customer communication. GoHighLevel manages the funnel and workflow stages, with Stripe, Twilio, Zapier and webhooks linking the surrounding services. Custom page and form code supports the order journey. Customer messages and delivery-related follow-ups are attached to the relevant order stage through the connected workflow.",
+      "stack": [
+        "GoHighLevel",
+        "Stripe",
+        "Twilio",
+        "Zapier",
+        "Webhooks",
+        "HTML",
+        "CSS",
+        "JavaScript"
+      ],
+      "category": "Payments & commerce",
+      "link": "https://www.upwork.com/freelancers/~014b478981bfacdaf1?p=1988622094966190080",
+      "scope": "Gift-order funnel, scheduling links and customer communication automation.",
+      "images": [
+        {
+          "src": "assets/portfolio/upwork/uw-09-01.png",
+          "caption": "Gift-delivery platform homepage and signup calls to action."
+        },
+        {
+          "src": "assets/portfolio/upwork/uw-09-02.png",
+          "caption": "Public consultation calendar for the gift-delivery platform."
+        },
+        {
+          "src": "assets/portfolio/upwork/uw-09-03.png",
+          "caption": "Gift-delivery website integration-marketing section."
+        }
+      ]
+    },
+    {
+      "id": "uw-10",
+      "sourceIndex": 9,
+      "title": "Restaurant reservations and dynamic menu",
+      "titleOriginal": "GoHighLevel Restaurant Booking Website | CRM, HTML, CSS & JavaScript",
+      "role": "GoHighLevel frontend and booking workflows",
+      "summary": "I built a responsive restaurant website in GoHighLevel with a categorized JavaScript menu and reservation forms. Form submissions connect to CRM records and workflow triggers, followed by booking confirmations and reminders through email or SMS. The implementation combines platform editing with custom HTML, CSS and JavaScript, keeping the menu, mobile layout and reservation journey within one maintainable website.",
+      "stack": [
+        "GoHighLevel",
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "CRM workflows",
+        "SMS/email automation"
+      ],
+      "category": "Funnels & websites",
+      "link": "https://www.upwork.com/freelancers/~014b478981bfacdaf1?p=1996231600239800320",
+      "scope": "Restaurant website, reservation forms and confirmation workflows.",
+      "images": [
+        {
+          "src": "assets/portfolio/upwork/uw-10-01.png",
+          "caption": "Archived restaurant homepage with menu and online-order navigation."
+        }
+      ]
+    },
+    {
+      "id": "uw-11",
+      "sourceIndex": 10,
+      "title": "Custom CRM dashboard and pipeline",
+      "titleOriginal": "Custom CRM Development | Marketing Automation, CRM Automation & API",
+      "role": "React frontend and Node.js backend development",
+      "summary": "This is the custom CRM project also shown as CRM-KP in my application work. It combines a React and TypeScript dashboard, client forms, a Kanban sales pipeline and centralized Redux state with an Express backend. The source includes Slack and email service modules. It remains a development snapshot, with authentication integration and demonstration adapters needing alignment before complete production use.",
+      "stack": [
+        "React",
+        "TypeScript",
+        "Redux Toolkit",
+        "Material UI",
+        "Node.js",
+        "Express",
+        "Slack Web API",
+        "Nodemailer"
+      ],
+      "category": "CRM & integrations",
+      "link": "https://www.upwork.com/freelancers/~014b478981bfacdaf1?p=2007049514782806016",
+      "scope": "The existing CRM-KP project, presented here through its published Upwork case.",
+      "images": [
+        {
+          "src": "assets/portfolio/upwork/uw-11-01.png",
+          "caption": "CRM dashboard with sample sales-pipeline data."
+        },
+        {
+          "src": "assets/portfolio/upwork/uw-11-03.png",
+          "caption": "CRM Kanban pipeline with sample deals."
+        },
+        {
+          "src": "assets/portfolio/upwork/uw-11-02.png",
+          "caption": "CRM client table with sample records."
+        },
+        {
+          "src": "assets/portfolio/upwork/uw-11-04.png",
+          "caption": "CRM email-template and compose interface."
+        }
+      ]
+    },
+    {
+      "id": "uw-12",
+      "sourceIndex": 11,
+      "title": "Construction quote intake and routing",
+      "titleOriginal": "GoHighLevel CRM Automation, Lead Generation, Workflow for Construction",
+      "role": "Service website and CRM workflow implementation",
+      "summary": "I connected a construction-services website and quote-request forms to an operational GoHighLevel pipeline. Enquiries move through estimate, scheduled, in-progress and completed stages, with tags, assignments and calendar links tying each request to the next action. Zapier and webhooks connect form capture to CRM updates, while confirmation and follow-up messages support the enquiry, estimate and scheduling portions of the workflow.",
+      "stack": [
+        "GoHighLevel",
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "Zapier",
+        "Webhooks",
+        "Email/SMS",
+        "GA4",
+        "GTM"
+      ],
+      "category": "CRM & integrations",
+      "link": "https://www.upwork.com/freelancers/~014b478981bfacdaf1?p=1995508211760467968",
+      "scope": "Service enquiries, quotation stages and scheduling-related CRM workflows.",
+      "images": [
+        {
+          "src": "assets/portfolio/upwork/uw-12-01.png",
+          "caption": "Construction-services homepage and estimate call to action."
+        },
+        {
+          "src": "assets/portfolio/upwork/uw-12-02.png",
+          "caption": "Construction estimate-request form with blank inputs."
+        },
+        {
+          "src": "assets/portfolio/upwork/uw-12-03.png",
+          "caption": "Construction service details and FAQ layout."
+        }
+      ]
+    },
+    {
+      "id": "uw-13",
+      "sourceIndex": 12,
+      "title": "Vacation rental booking and calendars",
+      "titleOriginal": "GoHighLevel Website for Vacation Rentals | Booking CRM Automation API",
+      "role": "GoHighLevel frontend and booking automation",
+      "summary": "I built rental pages and booking or enquiry forms that connect to GoHighLevel CRM pipelines and guest communication workflows. Google Calendar integration, Zapier and webhooks support availability updates alongside confirmations, reminders and follow-ups. Custom HTML, CSS and JavaScript provide the responsive frontend. The described project focuses on booking and calendar coordination; checkout and additional guest services were possible extensions.",
+      "stack": [
+        "GoHighLevel",
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "Google Calendar API",
+        "Zapier",
+        "Webhooks",
+        "Twilio",
+        "GA4",
+        "GTM"
+      ],
+      "category": "Funnels & websites",
+      "link": "https://www.upwork.com/freelancers/~014b478981bfacdaf1?p=2000942337346359296",
+      "scope": "Rental frontend, guest communication and calendar integration.",
+      "images": [
+        {
+          "src": "assets/portfolio/upwork/uw-13-01.png",
+          "caption": "Vacation-rental homepage in the GoHighLevel preview."
+        },
+        {
+          "src": "assets/portfolio/upwork/uw-13-02.png",
+          "caption": "Vacation-rental enquiry form with blank guest fields."
+        },
+        {
+          "src": "assets/portfolio/upwork/uw-13-03.png",
+          "caption": "Vacation-rental activity and guest-gallery layout."
+        }
+      ]
+    },
+    {
+      "id": "uw-14",
+      "sourceIndex": 13,
+      "title": "Professional service-request intake",
+      "titleOriginal": "GoHighLevel Landing Page & Service Request Automation | HTML, CSS, API",
+      "role": "Responsive frontend and CRM-connected forms",
+      "summary": "I built a responsive landing page and multi-step request forms for a professional-services workflow. Submitted information maps into GoHighLevel custom fields, tags, pipelines and opportunities, with routing, internal notifications and follow-up sequences. React, JavaScript, HTML and CSS support the interface, while Zapier and webhooks connect the form to CRM operations. The form collects the information needed to categorize each request.",
+      "stack": [
+        "GoHighLevel",
+        "React",
+        "JavaScript",
+        "HTML",
+        "CSS",
+        "Zapier",
+        "Webhooks",
+        "Form Builder"
+      ],
+      "category": "CRM & integrations",
+      "link": "https://www.upwork.com/freelancers/~014b478981bfacdaf1?p=2001679576824881152",
+      "scope": "Service-request forms, field mapping and CRM routing.",
+      "images": [
+        {
+          "src": "assets/portfolio/upwork/uw-14-01.png",
+          "caption": "Service-request homepage with a blank enquiry form."
+        },
+        {
+          "src": "assets/portfolio/upwork/uw-14-02.png",
+          "caption": "Service-request page and public business footer."
+        }
+      ]
+    },
+    {
+      "id": "uw-15",
+      "sourceIndex": 14,
+      "title": "Event tickets and merchandise sites",
+      "titleOriginal": "GHL Dual-Site | E-Commerce & Event Ticketing System for Entertainment",
+      "role": "Dual-site frontend and CRM/payment workflow setup",
+      "summary": "I built two connected GoHighLevel websites for event tickets and merchandise, using a shared CRM to keep the purchase journeys organized. Stripe payment events, Zapier and CRM workflows connect transactions to tags, confirmation or access emails and audience segmentation. Custom HTML, CSS and JavaScript support the responsive storefronts, with analytics configuration covering the ticket and merchandise paths.",
+      "stack": [
+        "GoHighLevel",
+        "Stripe",
+        "Zapier",
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "CRM workflows",
+        "GA4",
+        "GTM",
+        "Meta Pixel"
+      ],
+      "category": "Payments & commerce",
+      "link": "https://www.upwork.com/freelancers/~014b478981bfacdaf1?p=1998769231989415936",
+      "scope": "Two platform-based storefronts connected through payment events and a shared CRM.",
+      "images": [
+        {
+          "src": "assets/portfolio/upwork/uw-15-01.png",
+          "caption": "Entertainment-event homepage and ticket-navigation layout."
+        },
+        {
+          "src": "assets/portfolio/upwork/uw-15-03.png",
+          "caption": "Event enquiry popup with empty contact fields."
+        },
+        {
+          "src": "assets/portfolio/upwork/uw-15-04.png",
+          "caption": "Event partnership and programme content section."
+        },
+        {
+          "src": "assets/portfolio/upwork/uw-15-02.png",
+          "caption": "Ecommerce collection-grid preview for the entertainment project."
+        }
+      ]
+    },
+    {
+      "id": "uw-16",
+      "sourceIndex": 15,
+      "title": "Rental booking pages with React logic",
+      "titleOriginal": "GoHighLevel Booking Pages & CRM Automation | React HTML CSS JavaScript",
+      "role": "GoHighLevel frontend and CRM-connected booking pages",
+      "summary": "I built GoHighLevel rental landing pages with custom booking forms and React or JavaScript interface logic. Forms connect lead capture to CRM pipelines, tags and follow-up communication, while API integrations, Zapier and webhooks support calendar availability. The work combines responsive page implementation with workflow configuration, bringing property details, lead forms and booking-related communication into a consistent interface for prospective guests.",
+      "stack": [
+        "GoHighLevel",
+        "React",
+        "JavaScript",
+        "HTML",
+        "CSS",
+        "Zapier",
+        "Webhooks",
+        "API integration",
+        "GA4",
+        "GTM"
+      ],
+      "category": "Funnels & websites",
+      "link": "https://www.upwork.com/freelancers/~014b478981bfacdaf1?p=1999514259445223424",
+      "scope": "Rental pages, form behaviour and CRM-connected booking workflows.",
+      "images": [
+        {
+          "src": "assets/portfolio/upwork/uw-16-01.png",
+          "caption": "Vacation-rental homepage and booking call to action in GoHighLevel preview."
+        },
+        {
+          "src": "assets/portfolio/upwork/uw-16-03.png",
+          "caption": "Vacation-guide lead-capture form and rental-card layout."
+        },
+        {
+          "src": "assets/portfolio/upwork/uw-16-04.png",
+          "caption": "Rental-suite catalogue with amenities and detail links."
+        },
+        {
+          "src": "assets/portfolio/upwork/uw-16-02.png",
+          "caption": "Rental-detail gallery, property information and amenity layout."
+        }
+      ]
+    },
+    {
+      "id": "uw-17",
+      "sourceIndex": 16,
+      "title": "Coaching, training and speaking workflows",
+      "titleOriginal": "GoHighLevel Automation for Sales Coach | CRM, Funnels, API, HTML, CSS",
+      "role": "Funnels, CRM segmentation and automation integration",
+      "summary": "I built connected funnels for coaching, training and speaking services, with forms and tags routing contacts into the relevant journey. GoHighLevel pipelines and email sequences connect consultation booking, training-program checkout, onboarding, reminders and post-session follow-ups. Zapier, webhooks and custom HTML, CSS and JavaScript support the integrations and page behaviour. Each service line has its own lead classification and follow-up sequence.",
+      "stack": [
+        "GoHighLevel",
+        "Zapier",
+        "Webhooks",
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "Booking workflows",
+        "Commerce workflows"
+      ],
+      "category": "CRM & integrations",
+      "link": "https://www.upwork.com/freelancers/~014b478981bfacdaf1?p=1993712123571834880",
+      "scope": "Service-specific lead routing, booking and training-program automation.",
+      "images": [
+        {
+          "src": "assets/portfolio/upwork/uw-17-01.png",
+          "caption": "Sales-coaching homepage with branded hero and service navigation."
+        },
+        {
+          "src": "assets/portfolio/upwork/uw-17-02.png",
+          "caption": "Sales-coaching service choices and blank enquiry form."
+        },
+        {
+          "src": "assets/portfolio/upwork/uw-17-03.png",
+          "caption": "Coaching service page with embedded video and contact call to action."
+        }
+      ]
+    },
+    {
+      "id": "uw-18",
+      "sourceIndex": 17,
+      "title": "Custom restaurant menu and forms",
+      "titleOriginal": "GohighLevel Website | Landing Page HTML CSS JavaScript for Restaurant",
+      "role": "GoHighLevel website and custom JavaScript/CSS interface",
+      "summary": "I built a restaurant website in GoHighLevel with a custom category-filtered menu written in JavaScript and CSS. Responsive pages connect ordering, catering and reservation enquiries to CRM segments, tags and internal notifications. The project demonstrates custom frontend behaviour inside a website platform, alongside practical form integration. Its published scope describes enquiry and order capture; online payments were a possible later addition.",
+      "stack": [
+        "GoHighLevel",
+        "JavaScript",
+        "HTML",
+        "CSS",
+        "Form Builder",
+        "CRM tags",
+        "Workflow notifications"
+      ],
+      "category": "Funnels & websites",
+      "link": "https://www.upwork.com/freelancers/~014b478981bfacdaf1?p=1989001779622383616",
+      "scope": "Custom JavaScript menu, responsive pages and CRM-connected enquiry forms.",
+      "images": [
+        {
+          "src": "assets/portfolio/upwork/uw-18-01.png",
+          "caption": "Archived restaurant homepage with food imagery and section navigation."
+        },
+        {
+          "src": "assets/portfolio/upwork/uw-18-02.png",
+          "caption": "Archived catering request form with delivery and contact fields."
+        },
+        {
+          "src": "assets/portfolio/upwork/uw-18-03.png",
+          "caption": "Archived restaurant menu and public image gallery."
+        }
+      ]
+    },
+    {
+      "id": "uw-19",
+      "sourceIndex": 18,
+      "title": "Payment-triggered course access",
+      "titleOriginal": "GoHighLevel Automation | CRM Stripe Zapier Webhooks SMS & Coach Funnel",
+      "role": "Funnel and automation integration",
+      "summary": "I built a one-page course-sales funnel connecting Stripe checkout events to GoHighLevel CRM updates and access-email workflows. Zapier and webhooks link payment events to tags, welcome sequences and subsequent email or SMS follow-ups. Custom HTML, CSS and JavaScript support the responsive page and forms. The public case covers the integration flow; protected course content and client details remain private.",
+      "stack": [
+        "GoHighLevel",
+        "Stripe",
+        "Zapier",
+        "Webhooks",
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "Email/SMS"
+      ],
+      "category": "Payments & commerce",
+      "link": "https://www.upwork.com/freelancers/~014b478981bfacdaf1?p=1990431490445197312",
+      "scope": "Course-sales funnel and payment-triggered onboarding; course content remains private.",
+      "images": [
+        {
+          "src": "assets/portfolio/upwork/uw-19-01.png",
+          "caption": "Coaching lead-magnet landing page with video and guide call to action."
+        },
+        {
+          "src": "assets/portfolio/upwork/uw-19-02.png",
+          "caption": "Guide-download modal with blank contact and consent fields."
+        },
+        {
+          "src": "assets/portfolio/upwork/uw-19-03.png",
+          "caption": "Coaching landing-page overview, consultation call to action and testimonial section."
+        }
+      ]
     }
   ],
-  "visualNote": "Cover images are conceptual illustrations. Architecture diagrams describe implementation. Application screenshots and demonstrations are individually labelled."
+  "visualNote": "Project covers illustrate the tools and workflow. Architecture diagrams describe implementation; actual interface screenshots and synthetic demonstrations are individually labelled."
 };

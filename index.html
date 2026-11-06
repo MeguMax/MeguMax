@@ -7,13 +7,13 @@
   <meta name="theme-color" content="#f7f6f2">
   <meta property="og:title" content="Artem Serdiuk — Selected engineering work">
   <meta property="og:description" content="Three detailed engineering cases, architecture diagrams and interface walkthroughs.">
-  <meta property="og:image" content="https://megumax.github.io/MeguMax/assets/portfolio/upwork-cover.png">
-  <link rel="stylesheet" href="styles.css">
-  <script src="portfolio-data.js" defer></script><script src="portfolio.js" defer></script>
+  <meta property="og:image" content="https://megumax.github.io/MeguMax/assets/portfolio/upwork-cover-v2.png">
+  <link rel="stylesheet" href="styles.css?v=20261106-2">
+  <script src="portfolio-data.js?v=20261106-2" defer></script><script src="portfolio.js?v=20261106-2" defer></script>
 </head>
 <body>
   <a href="#work" class="skip">Skip to selected work</a>
-  <header class="site-header"><a class="wordmark" href="#top" aria-label="Artem Serdiuk, home">as<span>.</span></a><nav aria-label="Main navigation"><a href="#work">Selected work</a><a href="#more">More projects</a><a href="#about">About</a><a class="contact-link" href="mailto:artom.serdyuk.600@gmail.com">Get in touch <span aria-hidden="true">↗</span></a></nav></header>
+  <header class="site-header"><a class="wordmark" href="#top" aria-label="Artem Serdiuk, home">as<span>.</span></a><nav aria-label="Main navigation"><a href="#work">Selected work</a><a href="#more">More projects</a><a href="#client-work">Client work</a><a href="#about">About</a><a class="contact-link" href="mailto:artom.serdyuk.600@gmail.com">Get in touch <span aria-hidden="true">↗</span></a></nav></header>
   <main id="top">
     <section class="hero wrap" aria-labelledby="hero-title">
       <div class="eyebrow">Artem Serdiuk <span>/</span> Backend & Full-Stack Engineer</div>
@@ -24,11 +24,26 @@
     <section id="work" class="wrap work-section" aria-labelledby="work-title"><div class="section-heading"><div><span class="eyebrow">01 / Selected work</span><h2 id="work-title">Three systems. Three different problems.</h2></div><p>Independent implementation, from backend and integrations to the operator experience.</p></div><div id="project-index" class="project-index"></div></section>
     <div id="case-studies"></div>
     <section id="more" class="wrap more-section" aria-labelledby="more-title"><div class="section-heading"><div><span class="eyebrow">02 / Beyond the main cases</span><h2 id="more-title">More of my work</h2></div><p>Client integrations, web applications and AI research. Each project keeps its own scope.</p></div><div id="filters" class="filters" aria-label="Filter projects"></div><div id="additional-projects" class="additional-grid"></div><p class="catalog-note">Closed products and technical take-homes are labelled. Platform configuration and frontend interfaces are described separately from custom backend systems.</p></section>
-    <section id="about" class="about-section"><div class="wrap about-grid"><div><span class="eyebrow">03 / A little context</span><h2>Useful software goes<br>beyond the happy path.</h2></div><div><p class="about-lead">I enjoy the parts of a project where systems, data and people's work meet.</p><p>That means tracing identity across APIs, preserving manual changes during background processing, and making failures understandable enough for someone to recover.</p><p>Most of my client work is built independently. At <strong>LeafSplit</strong>, I work with a team on AI-model development and evaluation as Backend Lead, starting October 2026.</p><p>I'm completing a degree in Software Engineering at Kherson National Technical University, with graduation expected in 2027.</p><div class="skill-groups"><p><strong>Build</strong><br>JavaScript / TypeScript · Node.js · React / Next.js · Python</p><p><strong>Connect</strong><br>REST · Webhooks · OAuth / PKCE · MCP · Microsoft Graph</p><p><strong>Operate</strong><br>PostgreSQL · SQLite · Docker · AWS infrastructure · Regression testing</p></div><a href="assets/CV-Artem-Serdiuk-EN.pdf" class="text-link">Read my CV ↗</a></div></div></section>
+    <section id="client-work" class="client-work-section" aria-labelledby="client-work-title">
+      <div class="wrap">
+        <div class="section-heading"><div><span class="eyebrow">03 / Published client work</span><h2 id="client-work-title">Websites, funnels and connected workflows</h2></div><p>A fuller collection from my Upwork portfolio, with original project images and the scope behind each example.</p></div>
+        <div class="client-controls">
+          <div class="client-search"><label for="client-search">Search client work</label><input type="search" id="client-search" placeholder="Search by tool or type of work" autocomplete="off" aria-controls="client-projects"></div>
+          <div id="client-filters" class="filters client-filters" role="group" aria-label="Filter client work by category"></div>
+        </div>
+        <p id="client-count" class="client-count" aria-live="polite" aria-atomic="true"></p>
+        <div id="client-projects" class="client-grid"></div>
+        <p id="client-empty" class="client-empty" hidden>No matching entries. Try another tool or a broader search.</p>
+        <div class="client-show-all"><button type="button" id="client-show-all" class="secondary-button" aria-expanded="false" aria-controls="client-projects" hidden>Show all entries</button></div>
+        <p class="catalog-note">These are published portfolio entries, with related examples retained under their original sources. Some also appear in the selected application work above.</p>
+      </div>
+    </section>
+    <section id="about" class="about-section"><div class="wrap about-grid"><div><span class="eyebrow">04 / A little context</span><h2>Useful software goes<br>beyond the happy path.</h2></div><div><p class="about-lead">I enjoy the parts of a project where systems, data and people's work meet.</p><p>That means tracing identity across APIs, preserving manual changes during background processing, and making failures understandable enough for someone to recover.</p><p>Most of my client work is built independently. At <strong>LeafSplit</strong>, I work with a team on AI-model development and evaluation as Backend Lead, starting October 2026.</p><p>I'm completing a degree in Software Engineering at Kherson National Technical University, with graduation expected in 2027.</p><div class="skill-groups"><p><strong>Build</strong><br>JavaScript / TypeScript · Node.js · React / Next.js · Python</p><p><strong>Connect</strong><br>REST · Webhooks · OAuth / PKCE · MCP · Microsoft Graph</p><p><strong>Operate</strong><br>PostgreSQL · SQLite · Docker · AWS infrastructure · Regression testing</p></div><a href="assets/CV-Artem-Serdiuk-EN.pdf" class="text-link">Read my CV ↗</a></div></div></section>
     <section id="contact" class="wrap contact-section"><span class="eyebrow">Have a role or a problem in mind?</span><h2>Let's talk.</h2><a class="email-link" href="mailto:artom.serdyuk.600@gmail.com">artom.serdyuk.600@gmail.com <span aria-hidden="true">↗</span></a><div class="social-links"><a href="https://www.linkedin.com/in/artem-serdiuk-4a3a15334/">LinkedIn ↗</a><a href="https://github.com/MeguMax">GitHub ↗</a><a href="https://www.upwork.com/freelancers/~014b478981bfacdaf1">Upwork ↗</a></div></section>
   </main>
   <footer class="wrap footer"><span>Artem Serdiuk · Selected engineering work</span><span>Updated 6 November 2026</span></footer>
-  <dialog id="image-viewer"><button id="close-viewer" aria-label="Close image">Close ×</button><img alt=""><p></p></dialog>
+  <dialog id="client-project-dialog" class="client-project-dialog" aria-labelledby="client-project-title"><button type="button" id="close-client-project" class="dialog-close" aria-label="Close project details" autofocus>Close ×</button><div id="client-project-content"></div></dialog>
+  <dialog id="image-viewer" aria-labelledby="image-viewer-caption"><button type="button" id="close-viewer" aria-label="Close image" autofocus>Close ×</button><img alt=""><p id="image-viewer-caption"></p></dialog>
   <noscript><p class="wrap">The full project descriptions are available in the <a href="README.md">GitHub portfolio</a> and <a href="assets/Engineering-Portfolio-EN.pdf">portfolio PDF</a>.</p></noscript>
 </body>
 </html>
