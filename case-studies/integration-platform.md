@@ -1,18 +1,24 @@
 # Upwork workflow platform
 
-AI-assisted operations
+Proposal preparation
 
 ![Conceptual illustration](../assets/portfolio/upwork-cover-v2.png)
 
-I built an internal workspace that brings job discovery, qualification, reusable project evidence, AI-assisted preparation and human review into one workflow. The difficult part was keeping the right account, source facts and reviewed draft together while external calls, background jobs and operator edits happened at different times.
+I built a single workspace for finding relevant opportunities, reusing project evidence and reviewing AI-assisted proposal drafts before delivery.
+
+## User problem
+
+Preparing a proposal requires the job details, the right work profile, relevant project examples and a draft that someone has checked. Those details can change while preparation is running. The operator needs to see what was used and keep their corrections when a background task finishes.
+
+## Practical benefit
+
+Operators can find a job, reuse relevant evidence and review a draft in one place. Each draft retains its source references, and manual corrections stay separate from the original AI output. If preparation stops or a remote result is uncertain, the operator can see that state and check before repeating an action.
+
+## Implementation
 
 **My role:** Independent developer — backend, operator UI, integrations, testing and release tooling
 
 **Technology:** JavaScript ES modules, Node.js 20+, Express5, PostgreSQL/pg, Model Context Protocol SDK, OAuth2.1/PKCE, OpenAI Responses API, Zod/JSON Schema, HTML/CSS and vanilla JavaScript, Docker.
-
-## The problem
-
-The initial requirement was an OAuth/MCP bridge for an existing automation workflow. The application expanded into a dedicated business tool with persistent workflow state, versioned rules, source-bound preparation and an operator workspace.
 
 ## Architecture
 
@@ -93,4 +99,4 @@ The saved test and acceptance records are dated evidence, not new runs performed
 
 [All selected work](../README.md) · [Visual portfolio](../index.html)
 
-Updated 6 November 2026. Cover: conceptual illustration.
+Updated 7 November 2026. Cover: conceptual illustration.

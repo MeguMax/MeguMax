@@ -1,18 +1,24 @@
 # PatientNow ↔ GoHighLevel
 
-Event-driven integrations
+Contact and appointment sync
 
 ![Conceptual illustration](../assets/portfolio/patientnow-cover-v2.png)
 
-I built a TypeScript integration backend that keeps contacts, appointments, provider calendars and blocked time aligned across PatientNow and GoHighLevel. It also maps PatientNow orders and refunds into CRM opportunities. The engineering focus is predictable behaviour when events are duplicated, delayed, missing or interrupted by an external API failure.
+I built a synchronization backend designed to keep contact and appointment records consistent between PatientNow and GoHighLevel, with checks for repeated events and recovery from missed updates.
+
+## User problem
+
+Staff working in PatientNow and GoHighLevel need the same contact details and appointments in both places. Different record identifiers, repeated notifications and missed changes make it difficult to know which record to update.
+
+## Designed benefit
+
+The service is designed to reduce entering the same contact or appointment twice. It checks whether a change has already been handled and periodically compares records to catch missed updates. Unclear matches and conflicting edits are reported for review.
+
+## Implementation
 
 **My role:** Backend services, event normalization, identity resolution, synchronization rules, reconciliation, regression tests and deployment definitions. I also prepared an English operations and setup guide for handoff.
 
 **Technology:** TypeScript, Node.js, Fastify, Axios, Zod, AWS SQS FIFO, DynamoDB, EFS, ECS/Fargate deployment definitions, Terraform, Docker.
-
-## The problem
-
-Both platforms can change the same logical record, but they use different identifiers and expose different event and API semantics. A successful HTTP request is not enough: duplicate events can create duplicate records, a late update can undo a newer edit, and a missed reschedule can leave calendars inconsistent.
 
 ## Architecture
 
@@ -71,4 +77,4 @@ The saved test and acceptance records are dated evidence, not new runs performed
 
 [All selected work](../README.md) · [Visual portfolio](../index.html)
 
-Updated 6 November 2026. Cover: conceptual illustration.
+Updated 7 November 2026. Cover: conceptual illustration.
