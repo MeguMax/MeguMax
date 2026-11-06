@@ -2,7 +2,7 @@
 
 Event-driven integrations
 
-![Conceptual illustration](../assets/portfolio/patientnow-cover.png)
+![Conceptual illustration](../assets/portfolio/patientnow-cover-v2.png)
 
 I built a TypeScript integration backend that keeps contacts, appointments, provider calendars and blocked time aligned across PatientNow and GoHighLevel. It also maps PatientNow orders and refunds into CRM opportunities. The engineering focus is predictable behaviour when events are duplicated, delayed, missing or interrupted by an external API failure.
 
@@ -48,7 +48,13 @@ A PatientNow order maps to a CRM opportunity through a persisted order-ID link. 
 
 ## Interface and workflow
 
-The architecture and an interactive synthetic recovery walkthrough are available in the [visual portfolio](../index.html#patientnow). Live tenant and patient records are not published.
+![Excerpt from the 24 October 2026 deployment guide: scoped configuration and account-specific setup. Documentation example, not a live system capture.](../assets/portfolio/patientnow-guide-permissions-excerpt.png)
+
+Excerpt from the 24 October 2026 deployment guide: scoped configuration and account-specific setup. Documentation example, not a live system capture.
+
+![Excerpt from the 24 October 2026 deployment guide: acceptance checks for cancellation, refunds, provider calendars and blocked time. These are test instructions, not a claim that each live check has passed.](../assets/portfolio/patientnow-guide-acceptance-excerpt.png)
+
+Excerpt from the 24 October 2026 deployment guide: acceptance checks for cancellation, refunds, provider calendars and blocked time. These are test instructions, not a claim that each live check has passed.
 
 ## Validation and scope
 

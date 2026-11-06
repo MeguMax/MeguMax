@@ -2,7 +2,7 @@
 
 AI-assisted operations
 
-![Conceptual illustration](../assets/portfolio/upwork-cover.png)
+![Conceptual illustration](../assets/portfolio/upwork-cover-v2.png)
 
 I built an internal workspace that brings job discovery, qualification, reusable project evidence, AI-assisted preparation and human review into one workflow. The difficult part was keeping the right account, source facts and reviewed draft together while external calls, background jobs and operator edits happened at different times.
 
@@ -48,9 +48,37 @@ Built immutable application packages, account-scoped previews, duplicate-send lo
 
 ## Interface and workflow
 
-![Actual component renderer and styling, populated with synthetic portfolio data. Isolated demonstration; no live account, AI request or application submission.](../assets/portfolio/upwork-renderer-demo.png)
+![Actual full application interface with synthetic data: a work profile and its pinned preparation policies.](../assets/portfolio/upwork-work-profile-full-app-synthetic.png)
 
-Actual component renderer and styling, populated with synthetic portfolio data. Isolated demonstration; no live account, AI request or application submission.
+Actual full application interface with synthetic data: a work profile and its pinned preparation policies.
+
+![Actual current Jobs interface with synthetic data: saved job records, preparation state and explicit review steps.](../assets/portfolio/upwork-jobs-list-demo.png)
+
+Actual current Jobs interface with synthetic data: saved job records, preparation state and explicit review steps.
+
+![Actual current operator workspace with synthetic portfolio data: job discovery and preparation state. No live accounts or external actions.](../assets/portfolio/upwork-jobs-workspace-demo.png)
+
+Actual current operator workspace with synthetic portfolio data: job discovery and preparation state. No live accounts or external actions.
+
+![Actual current portfolio library with synthetic cases and evidence boundaries. No live client records.](../assets/portfolio/upwork-portfolio-library-demo.png)
+
+Actual current portfolio library with synthetic cases and evidence boundaries. No live client records.
+
+![Actual current dashboard with synthetic workflow data. Displayed counts are demonstration values.](../assets/portfolio/upwork-dashboard-demo.png)
+
+Actual current dashboard with synthetic workflow data. Displayed counts are demonstration values.
+
+![Actual job-list renderer with synthetic workflow states; draft, review and delivery states remain distinct.](../assets/portfolio/upwork-job-workflow-states-synthetic.png)
+
+Actual job-list renderer with synthetic workflow states; draft, review and delivery states remain distinct.
+
+![Actual chat component with synthetic participants and an explicit recipient-review step.](../assets/portfolio/upwork-chat-exact-recipient-review-synthetic.png)
+
+Actual chat component with synthetic participants and an explicit recipient-review step.
+
+![Actual original-result component with synthetic portfolio data, separate from human corrections.](../assets/portfolio/upwork-renderer-demo.png)
+
+Actual original-result component with synthetic portfolio data, separate from human corrections.
 
 ## Validation and scope
 

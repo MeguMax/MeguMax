@@ -2,7 +2,7 @@
 
 Documents & Microsoft 365
 
-![Conceptual illustration](../assets/portfolio/mifile-cover.png)
+![Conceptual illustration](../assets/portfolio/mifile-cover-v2.png)
 
 I built a document operations platform that turns incoming emails and PDFs into isolated case drafts. It preserves reviewers' corrections, pins documents to reviewed versions and verifies external saved bundles before reporting preparation complete.
 
@@ -48,9 +48,17 @@ A persistent notification outbox is tied to a verified prepared bundle. Duplicat
 
 ## Interface and workflow
 
+![Actual application UI with synthetic QA data: several independent cases share one intake email while unassigned supporting PDFs remain visible for review.](../assets/portfolio/mifile-case-assignment-demo.png)
+
+Actual application UI with synthetic QA data: several independent cases share one intake email while unassigned supporting PDFs remain visible for review.
+
 ![Actual application UI with synthetic QA data: document preview and guided package corrections.](../assets/portfolio/mifile-review-demo.png)
 
 Actual application UI with synthetic QA data: document preview and guided package corrections.
+
+![Actual application UI with synthetic QA data: moving selected supporting PDFs to another case preserves original OneDrive files and requires review of both packages.](../assets/portfolio/mifile-bulk-document-move-demo.png)
+
+Actual application UI with synthetic QA data: moving selected supporting PDFs to another case preserves original OneDrive files and requires review of both packages.
 
 ![Actual application UI with synthetic QA data: extracted fields retain visible source labels and manual review controls.](../assets/portfolio/mifile-fields-demo.png)
 
@@ -67,6 +75,30 @@ Actual application UI with synthetic QA data: bounded document-recognition retri
 ![Generated editable-PDF example rendered for inspection. All populated parties and contact details are fictional QA data; do not file.](../assets/portfolio/mifile-editable-pdf-demo.png)
 
 Generated editable-PDF example rendered for inspection. All populated parties and contact details are fictional QA data; do not file.
+
+![Actual application UI with synthetic QA data: versioned court rules preserve existing manual document choices.](../assets/portfolio/mifile-court-rule-demo.png)
+
+Actual application UI with synthetic QA data: versioned court rules preserve existing manual document choices.
+
+![Actual application UI with synthetic QA data: a simulated download timeout is visible alongside bounded retry status and actionable corrections.](../assets/portfolio/mifile-document-retry-demo.png)
+
+Actual application UI with synthetic QA data: a simulated download timeout is visible alongside bounded retry status and actionable corrections.
+
+![Actual application UI with synthetic QA data: the operator can distinguish OCR-derived source fields and cross-check completion from later preparation or submission state.](../assets/portfolio/mifile-ocr-source-demo.png)
+
+Actual application UI with synthetic QA data: the operator can distinguish OCR-derived source fields and cross-check completion from later preparation or submission state.
+
+![Actual application UI with synthetic QA data: uncertain notification delivery stays separate from the saved preparation package and prompts inbox review before retry.](../assets/portfolio/mifile-notification-review-demo.png)
+
+Actual application UI with synthetic QA data: uncertain notification delivery stays separate from the saved preparation package and prompts inbox review before retry.
+
+![Rendered generated PDF with fictional QA fields. A template-output example, not a real legal record or filing.](../assets/portfolio/mifile-dc508-output-demo.png)
+
+Rendered generated PDF with fictional QA fields. A template-output example, not a real legal record or filing.
+
+![Rendered generated PDF with fictional QA fields, visibly labelled QA TEST - DO NOT FILE.](../assets/portfolio/mifile-mc202-output-demo.png)
+
+Rendered generated PDF with fictional QA fields, visibly labelled QA TEST - DO NOT FILE.
 
 ## Validation and scope
 
