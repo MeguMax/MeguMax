@@ -1,65 +1,68 @@
-# PatientNow and GoHighLevel Integration
+# PatientNow ↔ GoHighLevel
 
-A TypeScript service for bidirectional synchronization between a practice-management platform and CRM workflows. Independently designed and implemented by [Artem Serdiuk](https://github.com/MeguMax).
+Event-driven integrations
 
-The published source implements bidirectional contact and appointment synchronization, purchase-history processing, periodic jobs, dry-run operations, sync history and operational API routes. The broader project has since evolved into event-driven processing with recovery and reconciliation.
+![Conceptual illustration](../assets/portfolio/patientnow-cover.png)
 
-## Source snapshot
+I built a TypeScript integration backend that keeps contacts, appointments, provider calendars and blocked time aligned across PatientNow and GoHighLevel. It also maps PatientNow orders and refunds into CRM opportunities. The engineering focus is predictable behaviour when events are duplicated, delayed, missing or interrupted by an external API failure.
 
-The public `main` branch is an earlier polling-based implementation. It contains the contact, appointment, purchase, API and scheduled-runner code. The webhook/SQS/DynamoDB implementation, provider-calendar extensions, automated test suite and Terraform deployment definitions described below belong to the newer working implementation and are not currently included in this public snapshot.
+**My role:** Backend services, event normalization, identity resolution, synchronization rules, reconciliation, regression tests and deployment definitions. I also prepared an English operations and setup guide for handoff.
 
-## Broader project engineering scope
+**Technology:** TypeScript, Node.js, Fastify, Axios, Zod, AWS SQS FIFO, DynamoDB, EFS, ECS/Fargate deployment definitions, Terraform, Docker.
 
-- **Identity and consistency:** persisted cross-platform links, safe match resolution, stale-update handling and pending-create recovery.
-- **Event processing:** normalized tenant-aware envelopes, ordered SQS FIFO groups, processing receipts in DynamoDB and message visibility renewal.
-- **Recovery:** retries, dead-letter queue configuration, checkpoints and periodic reconciliation.
-- **Appointments:** authoritative rereads, provider calendar mapping, outbound-event echo suppression, cancellation tombstones and timezone normalization.
-- **Business records:** purchase-to-opportunity mapping with void and refund handling.
-- **Operations:** separate API and worker entry points, protected administrative routes, production configuration validation and deployment documentation.
+## The problem
 
-## Architecture of the newer implementation
+Both platforms can change the same logical record, but they use different identifiers and expose different event and API semantics. A successful HTTP request is not enough: duplicate events can create duplicate records, a late update can undo a newer edit, and a missed reschedule can leave calendars inconsistent.
 
-```mermaid
-flowchart TD
-    A[PatientNow events] --> C[Fastify webhook API]
-    B[GoHighLevel events] --> C
-    C --> D[Normalized event envelope]
-    D --> E[SQS FIFO]
-    E --> F[Worker]
-    F --> G[DynamoDB event receipts]
-    F --> H[Contacts appointments calendars and sales services]
-    H --> I[Destination APIs]
-    H --> J[Identity links snapshots and checkpoints]
-    K[Periodic reconciliation] --> H
-    E --> L[Dead-letter queue]
-```
+## Architecture
 
-API ingestion and synchronization work run separately. The deployment design uses one state-writing worker and ordered domain streams to preserve consistency across platform-specific IDs. API replicas can scale independently.
+![Simplified implementation architecture](../assets/portfolio/patientnow-architecture.svg)
 
-## Technical decisions
+Simplified implementation diagram, not a screenshot of production infrastructure.
 
-**Order events before resolving shared identity.** The platforms assign different IDs to the same logical record. FIFO groups therefore preserve ordering at the tenant/domain level while the worker resolves the persisted relationship.
+## Engineering decisions
 
-**Make duplicate delivery explicit.** Processing receipts distinguish completed events, active work and retryable failures. Business services also check current records and identity links before applying changes.
+### Order events before resolving identity
 
-**Treat cancellation as domain state.** A cancelled appointment retains enough identity and state to avoid accidental recreation during later reconciliation.
+The two providers assign different record IDs. The queue therefore orders a tenant/entity-type stream instead of assuming that either provider ID is already a shared identity. The worker stops later messages in a failed group from overtaking the failure.
 
-**Reconcile rather than trust webhooks alone.** Periodic scans and checkpoints provide a recovery path for changes that were missed or arrived in an unexpected shape.
+### Give processing a durable owner
 
-## Stack
+DynamoDB conditional writes acquire a processing lease and distinguish processed duplicates from work already in progress. Failed or expired work can be retried. SQS visibility is renewed during long operations, and a message is removed only after successful processing.
 
-**Published source:** TypeScript, Node.js, Fastify, Axios and Zod.
+### Refuse uncertain identity matches
 
-**Newer implementation:** AWS SQS FIFO, DynamoDB, EFS and Docker. Terraform defines ECS/Fargate API and worker services, ALB/TLS, IAM access, queue recovery and CloudWatch logging.
+Contact resolution checks persisted links, managed custom IDs and provider lookups. Ambiguous or conflicting matches fail visibly rather than choosing the first candidate. Pending-create state supports recovery when a provider may have created a record but its response did not contain an ID.
 
-## Validation
+### Treat time and cancellation as domain state
 
-The newer working implementation includes automated regression tests for payload parsing, authorization, event identity, ordered processing, date/time handling, appointment changes, cancellation history, provider calendar reuse and refund mapping. Those tests are not included in the earlier public snapshot. Live service verification is a separate operation from the local test suite.
+Appointment handling includes authoritative rereads, timezone normalization, echo suppression and cancellation tombstones. Moving an appointment uses create, verify and delete with a rollback path because the source API does not expose the needed update operation.
 
-## Project discussion
+### Recover from missing events
 
-I can walk through the synchronization model, an event's path from ingestion to destination, failure recovery, the single-worker consistency tradeoff and the tests behind a change using synthetic examples.
+Paginated reconciliation compares linked records and checkpoints instead of assuming every webhook arrives. Provider-calendar and blocked-time reconciliation handles changes not represented by the selected webhook systems. Concurrent edits to a blocked-time record are surfaced as conflicts.
 
-## Contact
+### Represent sales without duplicating revenue
 
-[LinkedIn](https://www.linkedin.com/in/artem-serdiuk-4a3a15334/) · [GitHub](https://github.com/MeguMax) · [Upwork](https://www.upwork.com/freelancers/~014b478981bfacdaf1)
+A PatientNow order maps to a CRM opportunity through a persisted order-ID link. Voids and full or partial refunds update the associated representation. Purchases flow from PatientNow to GHL; this is not a bidirectional payment-processing system.
+
+## Interface and workflow
+
+The architecture and an interactive synthetic recovery walkthrough are available in the [visual portfolio](../index.html#patientnow). Live tenant and patient records are not published.
+
+## Validation and scope
+
+- **74 offline tests.** An isolated verification run dated 29 October 2026 passed 74 tests across 18 files with outbound networking blocked. This is historical regression evidence, not a fresh live end-to-end run.
+- **24-page operations guide.** Prepared an English deployment and handoff guide covering setup, configuration and operations.
+
+The current design deliberately uses one writer worker over EFS identity/history state. API replicas scale separately. A complete live cross-platform run, HIPAA certification, uptime and business-volume metrics are not claimed.
+
+Current local implementation is broader than the earlier public source snapshot.
+
+[View the earlier public implementation](https://github.com/MeguMax/PN---GHL)
+
+The saved test and acceptance records are dated evidence, not new runs performed for this portfolio.
+
+[All selected work](../README.md) · [Visual portfolio](../index.html)
+
+Updated 6 November 2026. Cover: conceptual illustration.

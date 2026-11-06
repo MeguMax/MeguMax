@@ -1,57 +1,68 @@
-# Upwork integration and proposal workspace
+# Upwork workflow platform
 
-An internal application for job discovery, portfolio matching, AI-assisted preparation and operator-controlled API actions. I designed and implemented the backend, browser interface, workflow state, integrations, tests and release tooling.
+AI-assisted operations
 
-The application uses **JavaScript ES modules, Node.js, Express and PostgreSQL**. Its operator interface is HTML/CSS/JavaScript. React and TypeScript are used in my other projects, not this interface.
+![Conceptual illustration](../assets/portfolio/upwork-cover.png)
 
-## Workflow
+I built an internal workspace that brings job discovery, qualification, reusable project evidence, AI-assisted preparation and human review into one workflow. The difficult part was keeping the right account, source facts and reviewed draft together while external calls, background jobs and operator edits happened at different times.
 
-| Stage | Responsibility |
-| --- | --- |
-| Connect | Authenticated adapters read Upwork MCP/API data. |
-| Discover | Scanners qualify jobs and save source context in PostgreSQL. |
-| Prepare | AI-assisted preparation returns to the operator workspace for review. |
-| Approve | The operator approves an action against saved inputs and revision. |
-| Reconcile | Dispatch results are recorded and independently checked. |
+**My role:** Independent developer — backend, operator UI, integrations, testing and release tooling
 
-PostgreSQL stores discovery, preparation and dispatch state throughout the workflow.
+**Technology:** JavaScript ES modules, Node.js 20+, Express5, PostgreSQL/pg, Model Context Protocol SDK, OAuth2.1/PKCE, OpenAI Responses API, Zod/JSON Schema, HTML/CSS and vanilla JavaScript, Docker.
+
+## The problem
+
+The initial requirement was an OAuth/MCP bridge for an existing automation workflow. The application expanded into a dedicated business tool with persistent workflow state, versioned rules, source-bound preparation and an operator workspace.
+
+## Architecture
+
+![Simplified implementation architecture](../assets/portfolio/upwork-architecture.svg)
+
+Simplified implementation diagram, not a screenshot of production infrastructure.
 
 ## Engineering decisions
 
-### Authentication and account context
+### Bind authentication to the correct connection
 
-MCP connections support OAuth discovery, dynamic client registration and PKCE. Tokens are encrypted per connection, and competing refresh requests share one in-flight operation. Discovery context and the identity allowed to act are kept separate.
+Implemented OAuth discovery and PKCE, encrypted per-connection token storage, account-to-connection routing and single-flight refresh. Concurrent requests share the same refresh operation instead of racing a rotating refresh token.
 
-### Persistent state and concurrent changes
+### Treat persistence uncertainty as a state, not a retry instruction
 
-PostgreSQL transactions, row locks and revision checks protect workflow changes. Long-running work rechecks its source version before updating a draft, preserving newer manual edits. An uncertain database commit stops further processing until the outcome can be reconciled.
+Used transactional PostgreSQL updates, a locked metadata row and revision-aware snapshots. If a COMMIT response becomes ambiguous, the store stops and requires reconciliation instead of silently falling back to old JSON or replaying a write.
 
-### Discovery and portfolio evidence
+### Make long-running preparation reproducible
 
-Versioned scanners combine provider search with local matching rules, deduplicate results and coordinate rate limits and cooldowns. Capability profiles and portfolio records retain their source context. The portfolio knowledge layer extracts source-linked information; it is not a vector-search or model-training claim.
+Added a durable run ledger with pinned input and policy hashes, version checks, ownership and ordered stages. Interrupted runs remain visible. A draft can be traced back to the specific job facts, profile, rule version and portfolio evidence used to create it.
 
-### AI preparation
+### Validate AI output against server-owned evidence
 
-The OpenAI Responses API produces schema-constrained proposal packages and screening answers. The server checks evidence identifiers, source freshness and business constraints after generation. Missing or unsupported facts remain review items.
+The model selects permitted evidence identifiers. The server resolves the original quotes and applies domain rules after schema validation. Unsupported experience, missing sources and unknown commitments remain blocked or explicitly unknown; human corrections are stored separately from original model output.
 
-### Approval and external outcomes
+### Preserve richer records during partial refreshes
 
-An approved action is bound to saved inputs, identity and revision. A durable claim is recorded before dispatch, and duplicate-action locks remain in place when the result is uncertain. Provider acknowledgement and independent delivery readback are separate states.
+Separated complete job details from lower-confidence search observations. Equivalent money formats, reordered lists and contained description snippets do not replace authoritative fields. Meaningful contradictions flag a refresh while preserving the original draft and history.
 
-### Operator experience and intake
+### Separate preparation, approval and remote delivery
 
-The browser workspace covers scanners, qualification, profiles, sources, drafts, feedback and conversations. Stale-response protection prevents late requests from replacing another working draft. An optional read-only IMAP source implements MIME parsing, recipient mapping, deduplication, quarantine and atomic progress checkpoints.
+Built immutable application packages, account-scoped previews, duplicate-send locks and delivery states that distinguish acknowledgement, verified delivery and unknown outcomes. The UI preserves unsaved manual text and rejects stale asynchronous responses.
+
+## Interface and workflow
+
+![Actual component renderer and styling, populated with synthetic portfolio data. Isolated demonstration; no live account, AI request or application submission.](../assets/portfolio/upwork-renderer-demo.png)
+
+Actual component renderer and styling, populated with synthetic portfolio data. Isolated demonstration; no live account, AI request or application submission.
 
 ## Validation and scope
 
-- The recorded full regression run on **2 November 2026 passed 3,831 Node tests**. The saved run was matched to the source/test snapshot during review. The suite includes fixtures and mocked providers; this is not a coverage percentage or a count of live end-to-end tests.
-- Bounded operator-approved pilot actions were checked through independent readback of core proposal fields. This does not establish contracts, revenue or complete verification of every optional provider field.
-- Docker release checks include targeted Linux validation with network access disabled and preservation checks for existing state and dependent services.
-- The IMAP implementation was tested and installed, but a live mailbox and polling were not activated in the reviewed acceptance evidence.
-- HubSpot remained a review queue. A completed live CRM writer, full individual-user RBAC product and production-scale throughput are not claimed.
+- **5,388 passing tests.** Saved regression run dated 6 November 2026. A separate, overlapping Linux run passed 1,987 tests with outbound networking disabled; the counts are not added.
+- **A bounded performance experiment.** For one saved record, payload size changed from 545,987 to 71,343 bytes. Median read time changed from 2,300.4 to 1,325.7 ms across three GET requests before and after. This is a single-record comparison, not a production-wide benchmark.
 
-## Technologies
+The platform prepares and reviews work with guarded provider operations. A prepared package, acknowledged request and independently verified remote result remain separate states. Shared operator authentication and process-local coordination are current architectural constraints.
 
-JavaScript, Node.js, Express, PostgreSQL, MCP SDK, OAuth/PKCE, Zod, OpenAI Responses API, ImapFlow, mailparser and Docker/Compose.
+Application source is private. This public case describes a sanitized architecture.
 
-The application source is private. This public summary contains architecture and engineering scope without client records, credentials or internal endpoints.
+The saved test and acceptance records are dated evidence, not new runs performed for this portfolio.
+
+[All selected work](../README.md) · [Visual portfolio](../index.html)
+
+Updated 6 November 2026. Cover: conceptual illustration.
