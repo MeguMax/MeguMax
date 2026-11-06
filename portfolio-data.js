@@ -1,5 +1,5 @@
 window.PORTFOLIO = {
-  "updated": "6 November 2026",
+  "updated": "7 November 2026",
   "profile": {
     "name": "Artem Serdiuk",
     "title": "Backend & Full-Stack Engineer",
@@ -16,9 +16,11 @@ window.PORTFOLIO = {
     {
       "id": "upwork",
       "title": "Upwork workflow platform",
-      "eyebrow": "AI-assisted operations",
-      "summary": "I built an internal workspace that brings job discovery, qualification, reusable project evidence, AI-assisted preparation and human review into one workflow. The difficult part was keeping the right account, source facts and reviewed draft together while external calls, background jobs and operator edits happened at different times.",
-      "problem": "The initial requirement was an OAuth/MCP bridge for an existing automation workflow. The application expanded into a dedicated business tool with persistent workflow state, versioned rules, source-bound preparation and an operator workspace.",
+      "eyebrow": "Proposal preparation",
+      "summary": "I built a single workspace for finding relevant opportunities, reusing project evidence and reviewing AI-assisted proposal drafts before delivery.",
+      "problem": "Preparing a proposal requires the job details, the right work profile, relevant project examples and a draft that someone has checked. Those details can change while preparation is running. The operator needs to see what was used and keep their corrections when a background task finishes.",
+      "benefit": "Operators can find a job, reuse relevant evidence and review a draft in one place. Each draft retains its source references, and manual corrections stay separate from the original AI output. If preparation stops or a remote result is uncertain, the operator can see that state and check before repeating an action.",
+      "benefitLabel": "Practical benefit",
       "role": "Independent developer — backend, operator UI, integrations, testing and release tooling",
       "stack": [
         "JavaScript ES modules",
@@ -115,9 +117,11 @@ window.PORTFOLIO = {
     {
       "id": "mifile",
       "title": "Legal document workflow",
-      "eyebrow": "Documents & Microsoft 365",
-      "summary": "I built a document operations platform that turns incoming emails and PDFs into isolated case drafts. It preserves reviewers' corrections, pins documents to reviewed versions and verifies external saved bundles before reporting preparation complete.",
-      "problem": "Legal intake was not a single PDF-to-form task. One email could contain several cases, scanned and fillable documents, incomplete fields and ambiguous attachments. Background extraction, human corrections and slow external systems had to coexist without mixing cases, discarding edits or repeating uncertain writes.",
+      "eyebrow": "Legal document review",
+      "summary": "I built a workflow that turns emailed legal documents into case packages reviewers can check and correct, with editable PDFs generated from Excel.",
+      "problem": "Legal staff need to prepare the right documents for each case and check the details before a package is ready. One email can include several cases, incomplete fields and attachments that need clarification. When processing continues during review, corrections and source versions need to stay together.",
+      "benefit": "Reviewers can inspect extracted fields beside each case's source documents and keep their corrections as processing continues. A failed document can be retried without blocking another case that is ready for preparation. Excel-based PDF generation produces editable documents for review.",
+      "benefitLabel": "Practical benefit",
       "role": "Sole full-stack engineer — application design, backend, admin interface, document pipeline, Microsoft integrations, browser preparation and Excel add-in.",
       "stack": [
         "TypeScript",
@@ -239,9 +243,11 @@ window.PORTFOLIO = {
     {
       "id": "patientnow",
       "title": "PatientNow ↔ GoHighLevel",
-      "eyebrow": "Event-driven integrations",
-      "summary": "I built a TypeScript integration backend that keeps contacts, appointments, provider calendars and blocked time aligned across PatientNow and GoHighLevel. It also maps PatientNow orders and refunds into CRM opportunities. The engineering focus is predictable behaviour when events are duplicated, delayed, missing or interrupted by an external API failure.",
-      "problem": "Both platforms can change the same logical record, but they use different identifiers and expose different event and API semantics. A successful HTTP request is not enough: duplicate events can create duplicate records, a late update can undo a newer edit, and a missed reschedule can leave calendars inconsistent.",
+      "eyebrow": "Contact and appointment sync",
+      "summary": "I built a synchronization backend designed to keep contact and appointment records consistent between PatientNow and GoHighLevel, with checks for repeated events and recovery from missed updates.",
+      "problem": "Staff working in PatientNow and GoHighLevel need the same contact details and appointments in both places. Different record identifiers, repeated notifications and missed changes make it difficult to know which record to update.",
+      "benefit": "The service is designed to reduce entering the same contact or appointment twice. It checks whether a change has already been handled and periodically compares records to catch missed updates. Unclear matches and conflicting edits are reported for review.",
+      "benefitLabel": "Designed benefit",
       "role": "Backend services, event normalization, identity resolution, synchronization rules, reconciliation, regression tests and deployment definitions. I also prepared an English operations and setup guide for handoff.",
       "stack": [
         "TypeScript",

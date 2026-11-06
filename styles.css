@@ -64,3 +64,10 @@ body.modal-open{overflow:hidden}
 
 /* Preserve cover titles at small sizes. */
 @media(max-width:650px){.project-preview img{object-fit:contain;background:#0a1a2e}}
+
+/* Practical context precedes implementation detail. */
+.case-benefit{background:#eef4f2;padding:18px 22px;margin-top:22px;margin-bottom:28px}
+.case-benefit p{margin:0;font-size:15px;line-height:1.75}
+.case-tools{margin:26px 0 28px}
+.case-tools>strong{display:block;font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px}
+@media(max-width:650px){.case-benefit{padding:16px;margin-top:20px;margin-bottom:23px}.case-benefit p{font-size:13px}.case-tools{margin:23px 0}}

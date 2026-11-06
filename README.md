@@ -2,7 +2,7 @@
 
 ### Backend, full-stack and integration engineering
 
-I build API integrations, document pipelines and internal tools, taking projects from requirements through implementation, testing and handoff. My strongest work deals with identity, workflow state, background processing and recovery when external systems fail.
+I build software that helps teams prepare proposals, review legal documents and keep business records aligned. I focus on workflows where people can check the source material, keep their corrections and recover when a task stops.
 
 Based in **Ukraine**. Open to remote work and discussing relocation within Europe.
 
@@ -14,9 +14,13 @@ Based in **Ukraine**. Open to remote work and discussing relocation within Europ
 
 [![Upwork workflow platform — conceptual cover](assets/portfolio/upwork-cover-v2.png)](case-studies/integration-platform.md)
 
-I built an internal workspace that brings job discovery, qualification, reusable project evidence, AI-assisted preparation and human review into one workflow. The difficult part was keeping the right account, source facts and reviewed draft together while external calls, background jobs and operator edits happened at different times.
+I built a single workspace for finding relevant opportunities, reusing project evidence and reviewing AI-assisted proposal drafts before delivery.
 
-**JavaScript ES modules · Node.js 20+ · Express5 · PostgreSQL/pg · Model Context Protocol SDK · OAuth2.1/PKCE**
+**User problem:** Preparing a proposal requires the job details, the right work profile, relevant project examples and a draft that someone has checked. Those details can change while preparation is running. The operator needs to see what was used and keep their corrections when a background task finishes.
+
+**Practical benefit:** Operators can find a job, reuse relevant evidence and review a draft in one place. Each draft retains its source references, and manual corrections stay separate from the original AI output. If preparation stops or a remote result is uncertain, the operator can see that state and check before repeating an action.
+
+**Implementation:** JavaScript ES modules · Node.js 20+ · Express5 · PostgreSQL/pg · Model Context Protocol SDK · OAuth2.1/PKCE.
 
 [Architecture, decisions and screenshots](case-studies/integration-platform.md)
 
@@ -24,9 +28,13 @@ I built an internal workspace that brings job discovery, qualification, reusable
 
 [![Legal document workflow — conceptual cover](assets/portfolio/mifile-cover-v2.png)](case-studies/legal-workflow.md)
 
-I built a document operations platform that turns incoming emails and PDFs into isolated case drafts. It preserves reviewers' corrections, pins documents to reviewed versions and verifies external saved bundles before reporting preparation complete.
+I built a workflow that turns emailed legal documents into case packages reviewers can check and correct, with editable PDFs generated from Excel.
 
-**TypeScript · Node.js · SQLite WAL · Microsoft Graph · Azure Identity · OneDrive**
+**User problem:** Legal staff need to prepare the right documents for each case and check the details before a package is ready. One email can include several cases, incomplete fields and attachments that need clarification. When processing continues during review, corrections and source versions need to stay together.
+
+**Practical benefit:** Reviewers can inspect extracted fields beside each case's source documents and keep their corrections as processing continues. A failed document can be retried without blocking another case that is ready for preparation. Excel-based PDF generation produces editable documents for review.
+
+**Implementation:** TypeScript · Node.js · SQLite WAL · Microsoft Graph · Azure Identity · OneDrive.
 
 [Architecture, decisions and screenshots](case-studies/legal-workflow.md)
 
@@ -34,9 +42,13 @@ I built a document operations platform that turns incoming emails and PDFs into 
 
 [![PatientNow ↔ GoHighLevel — conceptual cover](assets/portfolio/patientnow-cover-v2.png)](case-studies/patientnow-ghl.md)
 
-I built a TypeScript integration backend that keeps contacts, appointments, provider calendars and blocked time aligned across PatientNow and GoHighLevel. It also maps PatientNow orders and refunds into CRM opportunities. The engineering focus is predictable behaviour when events are duplicated, delayed, missing or interrupted by an external API failure.
+I built a synchronization backend designed to keep contact and appointment records consistent between PatientNow and GoHighLevel, with checks for repeated events and recovery from missed updates.
 
-**TypeScript · Node.js · Fastify · Axios · Zod · AWS SQS FIFO**
+**User problem:** Staff working in PatientNow and GoHighLevel need the same contact details and appointments in both places. Different record identifiers, repeated notifications and missed changes make it difficult to know which record to update.
+
+**Designed benefit:** The service is designed to reduce entering the same contact or appointment twice. It checks whether a change has already been handled and periodically compares records to catch missed updates. Unclear matches and conflicting edits are reported for review.
+
+**Implementation:** TypeScript · Node.js · Fastify · Axios · Zod · AWS SQS FIFO.
 
 [Architecture, decisions and screenshots](case-studies/patientnow-ghl.md)
 
